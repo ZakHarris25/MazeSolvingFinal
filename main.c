@@ -14,10 +14,10 @@
 
 
 struct Tile {
-    int east;
-    int west;
-    int north;
-    int south;
+    char east;
+    char west;
+    char south;
+    char north;
 };
 
 int main() {
@@ -29,18 +29,57 @@ int main() {
             {{},{},{},{},{},{},{},{}},
             {{},{},{},{},{},{},{},{}}
     };
+    for (int l = 0; l < 4; ++l) {
+        switch (l) {
+            case 0:
+                for (int i = 0; i < 5; ++i)
+                {
+                    for (int j = 0; j < 7; ++j)
+                    {
+                        tiles[i][j].east = csvExtract(l);
+                        printf("EAST: %c\n ", tiles[i][j].east);
+                    }
+                }
+                break;
+            case 1:
+                for (int i = 0; i < 5; ++i)
+                {
+                    for (int j = 0; j < 7; ++j)
+                    {
+                        tiles[i][j].west = csvExtract(l);
+                        printf("WEST at %i,%i: %c\n",i, j, tiles[i][j].west);
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < 5; ++i)
+                {
+                    for (int j = 0; j < 7; ++j)
+                    {
+                        tiles[i][j].south = csvExtract(l);
+                        printf("SOUTH: %c\n", tiles[i][j].south);
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < 5; ++i)
+                {
+                    for (int j = 0; j < 7; ++j)
+                    {
+                        tiles[i][j].north = csvExtract(l);
+                        printf("NORTH: %c\n", tiles[i][j].north);
+                    }
+                }
+                break;
+            default:
+                perror("Main Switch error");
 
-    for (int i = 0; i < 5; ++i) {
-        for (int j = 0; j < 7; ++j) {
-            printf("%i", tiles[i][j].east);
         }
     }
-    csvExtract();
-
     return 0;
 }
 
-int csvExtract(){
+char csvExtract(int c){
     char fileLine[16];
     const char check[5] = ",()\"";
     char *token;
@@ -60,20 +99,67 @@ int csvExtract(){
         perror("ERROR");
         return(-1);
     }
-    else
-    {
-        puts(fileLine);
-    }
+//    else
+//    {
+//        //puts(fileLine);
+//    }
 
 
     token = strtok(fileLine, check);
+    printf("%c\n", token[3]);
+    switch (c) {
+        case 0:
+            for (int i = 0; i < 6; ++i)
+            {
+                if(i==2)
+                {
+                    return(token[i]);
+                }else
+                    token = strtok(NULL, check);
+            }
+            break;
+        case 1:
+            for (int i = 0; i < 6; ++i)
+            {
+                if(i==3)
+                {
+                    return(token[i]);
+                }else
+                    token = strtok(NULL, check);
+            }
+            break;
+        case 2:
+            for (int i = 0; i < 6; ++i)
+            {
+                if(i==4)
+                {
+                    return(token[i]);
+                }else
+                    token = strtok(NULL, check);
+            }
+            break;
+        case 3:
+            for (int i = 0; i < 6; ++i)
+            {
+                if(i==5)
+                {
+                    return(token[i]);
+                }else
+                    token = strtok(NULL, check);
+            }
+            break;
+        default:
+            perror("switch error");
+            break;
+
+    }
     for (int i = 0; i < 5; ++i)
     {
-        while (token != NULL)
+        if(i==2)
         {
-            printf(" %s\n", token);
+            return(token[i]);
+        }else
             token = strtok(NULL, check);
-        }
     }
     return(-1);
 };

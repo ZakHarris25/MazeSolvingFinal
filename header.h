@@ -13,4 +13,4 @@
 #include <string.h>
 
 
-int csvExtract();
+char csvExtract(int c);
