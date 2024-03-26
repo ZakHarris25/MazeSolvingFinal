@@ -29,15 +29,16 @@ int main() {
             {{},{},{},{},{},{},{},{}},
             {{},{},{},{},{},{},{},{}}
     };
+    csvExtract(1);
     for (int l = 0; l < 4; ++l) {
         switch (l) {
             case 0:
-                for (int i = 0; i < 5; ++i)
+                for (int i = 0; i < 6; ++i)
                 {
-                    for (int j = 0; j < 7; ++j)
+                    for (int j = 0; j < 8; ++j)
                     {
                         tiles[i][j].east = csvExtract(l);
-                        printf("EAST: %c\n ", tiles[i][j].east);
+                        printf("EAST at %i,%i: %c\n ", i, j, tiles[i][j].east);
                     }
                 }
                 break;
@@ -79,6 +80,8 @@ int main() {
     return 0;
 }
 
+
+
 char csvExtract(int c){
     char fileLine[16];
     const char check[5] = ",()\"";
@@ -98,68 +101,71 @@ char csvExtract(int c){
     {
         perror("ERROR");
         return(-1);
+    }else
+    {
+        puts(fileLine);
     }
-//    else
-//    {
-//        //puts(fileLine);
-//    }
 
+    while( token != NULL ) {
 
-    token = strtok(fileLine, check);
-    printf("%c\n", token[3]);
-    switch (c) {
-        case 0:
-            for (int i = 0; i < 6; ++i)
-            {
-                if(i==2)
-                {
-                    return(token[i]);
-                }else
-                    token = strtok(NULL, check);
-            }
-            break;
-        case 1:
-            for (int i = 0; i < 6; ++i)
-            {
-                if(i==3)
-                {
-                    return(token[i]);
-                }else
-                    token = strtok(NULL, check);
-            }
-            break;
-        case 2:
-            for (int i = 0; i < 6; ++i)
-            {
-                if(i==4)
-                {
-                    return(token[i]);
-                }else
-                    token = strtok(NULL, check);
-            }
-            break;
-        case 3:
-            for (int i = 0; i < 6; ++i)
-            {
-                if(i==5)
-                {
-                    return(token[i]);
-                }else
-                    token = strtok(NULL, check);
-            }
-            break;
-        default:
-            perror("switch error");
-            break;
+        token = strtok(NULL, check);
 
+        switch (c) {
+            case 0:
+                for (int i = 0; i < 6; ++i)
+                {
+                    if(i==2)
+                    {
+                        return(token[i]);
+                    }else
+                        token = strtok(NULL, check);
+                }
+                break;
+            case 1:
+                for (int i = 0; i < 6; ++i)
+                {
+                    if(i==3)
+                    {
+                        return(token[i]);
+                    }else
+                        token = strtok(NULL, check);
+                }
+                break;
+            case 2:
+                for (int i = 0; i < 6; ++i)
+                {
+                    if(i==4)
+                    {
+                        return(token[i]);
+                    }else
+                        token = strtok(NULL, check);
+                }
+                break;
+            case 3:
+                for (int i = 0; i < 6; ++i)
+                {
+                    if(i==5)
+                    {
+                        return(token[i]);
+                    }else
+                        token = strtok(NULL, check);
+                }
+                break;
+            default:
+                perror("switch error: ");
+                printf("c = %i", c);
+                break;
+
+        }
     }
     for (int i = 0; i < 5; ++i)
     {
         if(i==2)
         {
             return(token[i]);
-        }else
+        }else {
             token = strtok(NULL, check);
+        }
     }
     return(-1);
 };
