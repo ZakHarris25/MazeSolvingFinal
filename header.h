@@ -6,3 +6,11 @@
 #define MAZESOLVINGFINAL_HEADER_H
 
 #endif //MAZESOLVINGFINAL_HEADER_H
+
+
+
+#include <stdio.h>
+#include <string.h>
+
+
+int csvExtract();

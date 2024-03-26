@@ -3,4 +3,5 @@ project(MazeSolvingFinal C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(MazeSolvingFinal main.c)
+add_executable(MazeSolvingFinal main.c
+        header.h)
