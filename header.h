@@ -13,4 +13,31 @@
 #include <string.h>
 #include <stdbool.h>
 
-struct Move aStar();
+int start[2] = {1, 1};
+int end[2] = {6,8};
+
+int *gValues;
+int *hValues;
+
+struct Tile {
+    int pos[2];
+    char east;
+    char west;
+    char south;
+    char north;
+
+    int f;
+    int g;
+    int h;
+};
+
+int* gCalc(int x, int y);
+int* hCalc(int x, int y);
+
+
+struct Move{
+    bool right;
+    bool left;
+    bool down;
+    bool up;
+};
