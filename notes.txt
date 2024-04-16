@@ -1,0 +1,48 @@
+
+
+
+//int main() {
+//    int openList[48];
+//    int closedList[48];
+//
+//    struct Tile tiles[6][8]={
+//            {{.east = 0, .west = 0, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1}},
+//            {{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1}},
+//            {{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =0, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 1}},
+//            {{.east = 0, .west = 0, .south =1, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1}},
+//            {{.east = 1, .west = 0, .south =1, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 0, .west = 0, .south =1, .north= 1}},
+//            {{.east = 1, .west = 0, .south =1, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0}}
+//    };
+//
+//
+//    for (int i = 0; i < 6; ++i) {
+//        for (int j = 0; j < 8; ++j) {
+//
+//
+//        }
+//    }
+//    return  0;
+//}
+//
+//int *gCalc(int x, int y){
+//    *gValues = start[0] - x;
+//    if (start[0] > x){
+//        *gValues = start[0] - x;
+//        printf("t");
+//        return(gValues);
+//    }else{
+//        *gValues = x - start[0];
+//        printf("t");
+//        return(gValues);
+//    }
+//}
+
+
+struct Tile maze[6][8]={
+        {{.east = 0, .west = 0, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1}},
+        {{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1}},
+        {{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =0, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 1}},
+        {{.east = 0, .west = 0, .south =1, .north= 1},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 0, .west = 0, .south =1, .north= 1}},
+        {{.east = 1, .west = 0, .south =1, .north= 1},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 1},{.east = 0, .west = 1, .south =0, .north= 1},{.east = 0, .west = 0, .south =1, .north= 1}},
+        {{.east = 1, .west = 0, .south =1, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =0, .north= 0},{.east = 1, .west = 1, .south =0, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0},{.east = 1, .west = 0, .south =1, .north= 0},{.east = 0, .west = 1, .south =1, .north= 0}}
+};
