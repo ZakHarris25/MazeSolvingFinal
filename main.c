@@ -3,11 +3,10 @@
 int main(){
     findSE();
     startUp();
-    while(winCon() == false){
+    while(winCon() == 0){
         checkDist();
     }
 }
-
 void findSE(){//function to find the start and end points of the maze
     for (int i = 0; i < 6; ++i) {               //iterates through and saves the start and end points in one array
         for (int j = 0; j < 8; ++j) {
@@ -26,7 +25,6 @@ void findSE(){//function to find the start and end points of the maze
         }
     }
 }
-
 void startUp(){ // gives output to the user and sets the current position
     currentPos[0] = startEndCO[0];
     currentPos[1] = startEndCO[1];
@@ -35,7 +33,6 @@ void startUp(){ // gives output to the user and sets the current position
     printf("End POSITION: %i, %i\n", startEndCO[2], startEndCO[3]);
 
 }
-
 void checkDist() { // function to find the direction the "mouse" can travel for the longest distance
     for (int i = 0; i < 4; ++i) {//clears the moveOptions array - was having problems with using both global and local variables so this was a fool proof way of clearing values
         moveOptions[i] = 0;
@@ -72,7 +69,6 @@ void checkDist() { // function to find the direction the "mouse" can travel for 
     }
     bestMove();
 }
-
 void bestMove(){
     int largest = -1;
     for (int i = 0; i < 4; i++) {
@@ -86,7 +82,6 @@ void bestMove(){
             currentPos[0] += moveOptions[0];//DOWN
             lastMove = 0;
             printf("\nCURRENT POSITION: %i, %i\n", currentPos[0], currentPos[1]);
-
             break;
         case 1:
             printf("\nUP\n");
@@ -98,27 +93,24 @@ void bestMove(){
             printf("\nRIGHT\n");
             currentPos[1] += moveOptions[2];//RIGHT
             lastMove = 2;
-
             printf("\nCURRENT POSITION: %i, %i\n", currentPos[0], currentPos[1]);
             break;
         case 3:
             printf("\nLEFT\n");
             currentPos[1] -= moveOptions[3];//LEFT
             lastMove = 3;
-
             printf("\nCURRENT POSITION: %i, %i\n", currentPos[0], currentPos[1]);
             break;
         default:
-            perror("\nSHITS FUCKED MOVEDIRECTION SWITCH\n");
+            perror("\nBESTMOVE SWITCH\n");
             break;
     }
 };
-
-bool winCon(){//checks whether the mouse is 1 off the end tile to signal that it has finished the maze
+int winCon(){//checks whether the mouse is 1 off the end tile to signal that it has finished the maze
     if(maze1[currentPos[0]-1][currentPos[1]] == 3 || maze1[currentPos[0]+1][currentPos[1]] == 3 || maze1[currentPos[0]][currentPos[1]+1] == 3 || maze1[currentPos[0]+1][currentPos[1]-1] == 3){
         printf("\nMaze completed");
-        return true;
+        return 1;
     }else{
-        return false;
+        return 0;
     }
 }
